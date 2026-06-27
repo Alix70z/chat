@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: chatwave-api
+    runtime: node
+    rootDir: files
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        value: https://hmsport2.netlify.app
+      - key: BCRYPT_COST
+        value: "12"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ENCRYPTION_SECRET
+        generateValue: true
+      - key: ENCRYPTION_SALT
+        generateValue: true

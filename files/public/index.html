@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ChatWave</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-2.9 8.7-7 10-4.1-1.3-7-5.4-7-10V6l7-3z"/><path d="M9.5 12l1.7 1.7L15 9.8"/></symbol>
+  <symbol id="icon-message" viewBox="0 0 24 24"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v6A3.5 3.5 0 0 1 16.5 15H10l-5 4v-4.5A3.5 3.5 0 0 1 4 12V5.5z"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6.6 3.6l2.2-.5 2.1 4.8-1.6 1.2c1 2.1 2.7 3.8 4.8 4.8l1.2-1.6 4.8 2.1-.5 2.2c-.3 1.3-1.5 2.2-2.9 2.1C10.5 18.3 5.7 13.5 5.3 7.3c-.1-1.4.8-2.6 2.1-2.9z"/></symbol>
+  <symbol id="icon-video" viewBox="0 0 24 24"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h7A2.5 2.5 0 0 1 16 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 4 16.5v-9z"/><path d="M16 10l4-2.5v9L16 14v-4z"/></symbol>
+  <symbol id="icon-users" viewBox="0 0 24 24"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M17 10a3 3 0 1 0 0-6"/><path d="M17.5 20H22a5 5 0 0 0-4-4.9"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></symbol>
+  <symbol id="icon-logout" viewBox="0 0 24 24"><path d="M10 5H5v14h5"/><path d="M14 8l4 4-4 4"/><path d="M8 12h10"/></symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M16 16l4 4"/></symbol>
+  <symbol id="icon-send" viewBox="0 0 24 24"><path d="M4 11.5l16-7-7 16-2.2-6.3L4 11.5z"/><path d="M10.8 14.2L20 4.5"/></symbol>
+  <symbol id="icon-paperclip" viewBox="0 0 24 24"><path d="M8 12.5l6.8-6.8a3.5 3.5 0 0 1 5 5L11 19.5a5 5 0 0 1-7-7l8.5-8.5"/><path d="M9.5 14.5l7-7"/></symbol>
+  <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="icon-camera" viewBox="0 0 24 24"><path d="M8.5 6l1.2-2h4.6l1.2 2H19a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h3.5z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></symbol>
+  <symbol id="icon-file" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2z"/><path d="M14 2v5h5"/></symbol>
+  <symbol id="icon-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></symbol>
+  <symbol id="icon-volume" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 8a5 5 0 0 1 0 8"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></symbol>
+  <symbol id="icon-x" viewBox="0 0 24 24"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></symbol>
+</svg>
+
+<div id="auth-screen" class="auth-screen">
+  <section class="auth-shell" aria-label="تسجيل الدخول">
+    <div class="auth-panel">
+      <div class="brand-lock">
+        <span class="brand-mark"><svg><use href="#icon-shield"></use></svg></span>
+        <span>ChatWave</span>
+      </div>
+      <h1>دخول آمن إلى محادثاتك</h1>
+      <p class="auth-subtitle">واجهة رسمية، رسائل مشفرة، وجلسات محمية لحوار سريع وواضح.</p>
+
+      <div class="auth-tabs">
+        <button class="tab-btn active" onclick="switchTab('login')">تسجيل الدخول</button>
+        <button class="tab-btn" onclick="switchTab('register')">حساب جديد</button>
+      </div>
+
+      <div id="login-form" class="auth-form">
+        <label class="field-label" for="login-username">اسم المستخدم</label>
+        <input class="auth-input" type="text" id="login-username" autocomplete="username" placeholder="اكتب اسم المستخدم"/>
+        <label class="field-label" for="login-password">كلمة المرور</label>
+        <input class="auth-input" type="password" id="login-password" autocomplete="current-password" placeholder="كلمة المرور"
+               onkeydown="if(event.key==='Enter')login()"/>
+        <button class="auth-btn" onclick="login()">دخول</button>
+      </div>
+
+      <div id="register-form" class="auth-form" style="display:none">
+        <label class="field-label" for="reg-username">اسم المستخدم</label>
+        <input class="auth-input" type="text" id="reg-username" autocomplete="username" placeholder="3 أحرف على الأقل"/>
+        <label class="field-label" for="reg-password">كلمة المرور</label>
+        <input class="auth-input" type="password" id="reg-password" autocomplete="new-password" placeholder="8 أحرف على الأقل"
+               onkeydown="if(event.key==='Enter')register()"/>
+        <button class="auth-btn" onclick="register()">إنشاء الحساب</button>
+      </div>
+
+      <div id="auth-error" class="auth-error" role="alert"></div>
+    </div>
+
+    <div class="auth-preview" aria-hidden="true">
+      <div class="preview-top">
+        <span class="status-dot"></span>
+        <span>قناة محمية</span>
+      </div>
+      <div class="preview-conversation">
+        <div class="preview-message in">تم تحديث مفاتيح التشفير بنجاح.</div>
+        <div class="preview-message out">الصورة الشخصية تظهر الآن في كل المحادثات.</div>
+        <div class="preview-message in small">جاهز للنشر على Netlify للواجهة.</div>
+      </div>
+      <div class="security-row">
+        <span><svg><use href="#icon-shield"></use></svg> AES-256-GCM</span>
+        <span><svg><use href="#icon-users"></use></svg> جلسات JWT</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="app" style="display:none" class="app">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-lock compact">
+        <span class="brand-mark"><svg><use href="#icon-shield"></use></svg></span>
+        <span>ChatWave</span>
+      </div>
+      <span class="security-chip">محمي</span>
+    </div>
+
+    <div class="sidebar-header">
+      <label class="avatar-uploader" title="تغيير الصورة الشخصية" aria-label="تغيير الصورة الشخصية">
+        <span class="my-avatar" id="my-avatar-icon">?</span>
+        <span class="avatar-edit"><svg><use href="#icon-camera"></use></svg></span>
+        <input type="file" id="avatar-input" accept="image/png,image/jpeg,image/webp,image/gif" onchange="uploadAvatar(this)"/>
+      </label>
+      <div class="my-info">
+        <div class="my-name" id="my-username-display">...</div>
+        <div class="my-id" id="my-id-display">ID: ...</div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="openAddContact()" title="إضافة جهة اتصال" aria-label="إضافة جهة اتصال"><svg><use href="#icon-plus"></use></svg></button>
+        <button class="icon-btn" onclick="logout()" title="تسجيل الخروج" aria-label="تسجيل الخروج"><svg><use href="#icon-logout"></use></svg></button>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <svg><use href="#icon-search"></use></svg>
+      <input type="text" placeholder="بحث في المحادثات" oninput="filterChats(this.value)"/>
+    </div>
+
+    <div class="sidebar-tabs">
+      <button class="stab active" onclick="showTab('chats')"><svg><use href="#icon-message"></use></svg><span>المحادثات</span></button>
+      <button class="stab" onclick="showTab('calls')"><svg><use href="#icon-phone"></use></svg><span>المكالمات</span></button>
+      <button class="stab" onclick="showTab('contacts')"><svg><use href="#icon-users"></use></svg><span>الجهات</span></button>
+    </div>
+
+    <div id="tab-chats" class="stab-content active">
+      <div id="chats-list" class="contact-list"></div>
+    </div>
+
+    <div id="tab-calls" class="stab-content" style="display:none">
+      <div id="calls-list" class="contact-list"></div>
+    </div>
+
+    <div id="tab-contacts" class="stab-content" style="display:none">
+      <div id="contacts-list" class="contact-list"></div>
+    </div>
+  </aside>
+
+  <main class="chat-area" id="chat-area">
+    <div class="welcome-screen" id="welcome-screen">
+      <div class="welcome-icon"><svg><use href="#icon-shield"></use></svg></div>
+      <h2>اختر جهة اتصال للبدء</h2>
+      <p>شارك رقمك التعريفي مع من تريد إضافته إلى المحادثات.</p>
+      <div class="my-id-share">
+        <span>رقمك</span>
+        <strong id="welcome-id">...</strong>
+        <button onclick="copyId()" class="copy-btn"><svg><use href="#icon-copy"></use></svg><span>نسخ</span></button>
+      </div>
+    </div>
+
+    <div id="active-chat" style="display:none" class="active-chat">
+      <div class="chat-header">
+        <div class="chat-peer-info">
+          <button class="icon-btn back-btn" onclick="backToList()" title="رجوع" aria-label="رجوع"><svg><use href="#icon-arrow"></use></svg></button>
+          <div class="peer-avatar" id="peer-avatar">?</div>
+          <div>
+            <div class="peer-name" id="peer-name">...</div>
+            <div class="peer-status" id="peer-status">غير متصل</div>
+          </div>
+        </div>
+        <div class="chat-actions">
+          <button class="icon-btn" onclick="startCall('voice')" title="مكالمة صوتية" aria-label="مكالمة صوتية"><svg><use href="#icon-phone"></use></svg></button>
+          <button class="icon-btn" onclick="startCall('video')" title="مكالمة فيديو" aria-label="مكالمة فيديو"><svg><use href="#icon-video"></use></svg></button>
+        </div>
+      </div>
+
+      <div class="messages-container" id="messages-container"></div>
+
+      <div id="typing-indicator" class="typing-indicator" style="display:none">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="message-input-area">
+        <label class="attach-btn" title="إرسال ملف" aria-label="إرسال ملف">
+          <svg><use href="#icon-paperclip"></use></svg>
+          <input type="file" id="file-input" style="display:none" onchange="sendMedia(this)"/>
+        </label>
+        <input type="text" id="message-input" class="msg-input" placeholder="اكتب رسالة"
+               oninput="onTyping()" onkeydown="if(event.key==='Enter')sendMessage()"/>
+        <button class="send-btn" onclick="sendMessage()" title="إرسال" aria-label="إرسال"><svg><use href="#icon-send"></use></svg></button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="add-contact-modal" class="modal" style="display:none">
+  <div class="modal-box">
+    <h3>إضافة جهة اتصال</h3>
+    <p>أدخل الرقم التعريفي المكون من 9 أرقام.</p>
+    <input type="text" id="friend-id-input" class="auth-input" placeholder="مثال: 895794588" maxlength="9" inputmode="numeric"/>
+    <div class="modal-actions">
+      <button class="auth-btn" onclick="addContact()">إضافة</button>
+      <button class="cancel-btn" onclick="closeModal()">إلغاء</button>
+    </div>
+    <div id="add-contact-error" class="auth-error" role="alert"></div>
+  </div>
+</div>
+
+<div id="call-modal" class="modal" style="display:none">
+  <div class="modal-box call-modal-box">
+    <div class="call-avatar" id="call-avatar-icon">?</div>
+    <h3 id="call-caller-name">المتصل</h3>
+    <p id="call-type-label">مكالمة صوتية</p>
+    <div class="call-actions">
+      <button class="accept-call-btn" onclick="acceptCall()" title="قبول" aria-label="قبول"><svg><use href="#icon-phone"></use></svg></button>
+      <button class="reject-call-btn" onclick="rejectCall()" title="رفض" aria-label="رفض"><svg><use href="#icon-x"></use></svg></button>
+    </div>
+  </div>
+</div>
+
+<div id="call-overlay" class="call-overlay" style="display:none">
+  <div class="call-overlay-content">
+    <div class="call-peer-avatar" id="call-overlay-avatar">?</div>
+    <div class="call-peer-name" id="call-overlay-name">...</div>
+    <div class="call-duration" id="call-duration">00:00</div>
+    <div class="call-controls">
+      <button class="call-ctrl-btn" onclick="toggleMute()" id="mute-btn" title="كتم الصوت" aria-label="كتم الصوت"><svg><use href="#icon-mic"></use></svg></button>
+      <button class="end-call-btn" onclick="endCall()" title="إنهاء المكالمة" aria-label="إنهاء المكالمة"><svg><use href="#icon-x"></use></svg></button>
+      <button class="call-ctrl-btn" onclick="toggleSpeaker()" title="السماعة" aria-label="السماعة"><svg><use href="#icon-volume"></use></svg></button>
+    </div>
+  </div>
+  <video id="local-video" autoplay muted playsinline></video>
+  <video id="remote-video" autoplay playsinline></video>
+</div>
+
+<script src="config.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  if (!window.io) {
+    document.write('<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"><\/script>');
+  }
+</script>
+<script src="app.js"></script>
+</body>
+</html>
