@@ -1,7 +1,23 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run check",
-  "devCommand": "npm start",
-  "installCommand": "npm install",
-  "fluid": true
+  "version": 2,
+  "builds": [
+    {
+      "src": "files/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "files/public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "files/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "files/public/$1"
+    }
+  ]
 }
